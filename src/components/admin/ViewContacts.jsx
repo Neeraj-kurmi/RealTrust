@@ -5,7 +5,7 @@ export default function ViewContacts() {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.REACT_APP_API_URL}/api/contacts`).then(res => setContacts(res.data));
+    axios.get(`${import.meta.env.VITE_API_URL}/api/contacts`).then(res => setContacts(res.data));
   }, []);
 
   return (
