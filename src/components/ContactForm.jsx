@@ -18,7 +18,7 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/contacts', form);
+      await axios.post(`${import.meta.env.REACT_APP_API_URL}/api/contacts`, form);
       toast.success('Quote requested successfully!');
       setForm({ fullName: '', email: '', mobile: '', city: '' });
     } catch (error) {
