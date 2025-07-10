@@ -1,0 +1,67 @@
+import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
+export default function AddProject() {
+  const [form, setForm] = useState({ name: '', description: '' });
+  const [image, setImage] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append('name', form.name);
+    data.append('description', form.description);
+    if (image) data.append('image', image);
+
+    await axios.post('http://localhost:5000/api/projects/upload', data);
+    toast.success('Project added successfully!');
+    setForm({ name: '', description: '' });
+    setImage(null);
+  };
+
+  return (
+    <div className="max-w-xl mx-auto bg-white p-6 mt-10 rounded shadow-md border">
+      <h2 className="text-2xl font-semibold text-center text-blue-700 mb-6">Add New Project</h2>
+      <form onSubmit={handleSubmit} className="space-y-4" encType="multipart/form-data">
+        <input
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          placeholder="Project Name"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-blue-500"
+          required
+        />
+        <textarea
+          name="description"
+          value={form.description}
+          onChange={handleChange}
+          placeholder="Description"
+          className="w-full border border-gray-300 rounded px-4 py-2 h-28 resize-none focus:outline-blue-500"
+          required
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="w-full text-gray-500 cursor-pointer"
+          required
+        />
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}
