@@ -22,7 +22,7 @@ export default function AddProject() {
     data.append('description', form.description);
     if (image) data.append('image', image);
 
-    await axios.post('http://localhost:5000/api/projects/upload', data);
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/projects/upload`, data);
     toast.success('Project added successfully!');
     setForm({ name: '', description: '' });
     setImage(null);
