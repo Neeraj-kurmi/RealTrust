@@ -9,7 +9,7 @@ export default function NewsletterForm() {
     e.preventDefault();
     if (!email) return;
     try {
-      await axios.post(`${import.meta.env.REACT_APP_API_URL}/api/subscribers`, { email }); // change if needed
+      await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/subscribers`, { email }); // change if needed
       toast.success('Subscribed!')
       setEmail('');
     } catch (err) {
