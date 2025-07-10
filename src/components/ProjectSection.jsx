@@ -15,7 +15,7 @@ export default function ProjectSection() {
       {projects.map((project) => (
         <div key={project._id} className="bg-white rounded-lg overflow-hidden shadow">
           <img
-            src={`https://realtrustbackend.onrender.com/uploads/${project.image}`}
+            src={`${import.meta.env.VITE_API_URL}${project.image}`}
             alt={project.name}
             className="w-full h-48 object-cover"
           />
