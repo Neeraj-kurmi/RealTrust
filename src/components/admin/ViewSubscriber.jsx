@@ -5,7 +5,7 @@ export default function ViewSubscribers() {
   const [subscribers, setSubscribers] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.REACT_APP_API_URL}/api/subscribers`).then(res => setSubscribers(res.data));
+    axios.get(`${import.meta.env.VITE_API_URL}/api/subscribers`).then(res => setSubscribers(res.data));
   }, []);
 
   return (
