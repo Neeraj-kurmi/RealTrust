@@ -23,7 +23,7 @@ export default function AddClient() {
     data.append('designation', form.designation);
     if (image) data.append('image', image);
 
-    await axios.post(`${import.meta.env.VITE_API_URL}/api/clients/upload`, data);
+    await axios.post(`${import.meta.env.REACT_APP_API_URL}/api/clients/upload`, data);
     toast.success('Client added successfully!');
     setForm({ name: '', description: '', designation: '' });
     setImage(null);
