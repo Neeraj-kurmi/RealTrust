@@ -5,7 +5,8 @@ export default function ClientSection() {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.REACT_APP_API_URL}/api/clients`)
+    console.log(import.meta.env.VITE_API_URL)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/clients`)
       .then(res => setClients(res.data))
       .catch(err => console.error('Error fetching clients:', err));
   }, []);
