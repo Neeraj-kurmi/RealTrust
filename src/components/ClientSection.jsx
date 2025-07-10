@@ -16,7 +16,7 @@ export default function ClientSection() {
         {clients.map(client => (
           <div key={client._id} className="p-6 rounded-lg shadow">
             <img
-              src={`https://realtrustbackend.onrender.com/uploads/${client.image}`}
+              src={`${import.meta.env.VITE_API_URL}${client.image}`}
               alt={client.name}
               className="w-20 h-20 object-cover rounded-full mx-auto mb-4"
             />
