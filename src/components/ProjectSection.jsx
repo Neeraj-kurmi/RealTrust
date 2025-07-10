@@ -5,7 +5,7 @@ export default function ProjectSection() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.REACT_APP_API_URL}/api/projects`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/projects`)
       .then(res => setProjects(res.data))
       .catch(err => console.error('Error fetching projects:', err));
   }, []);
