@@ -5,7 +5,7 @@ export default function ClientSection() {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/clients')
+    axios.get(`${import.meta.env.REACT_APP_API_URL}/api/clients`)
       .then(res => setClients(res.data))
       .catch(err => console.error('Error fetching clients:', err));
   }, []);
