@@ -15,7 +15,7 @@ export default function ProjectSection() {
       {projects.map((project) => (
         <div key={project._id} className="bg-white rounded-lg overflow-hidden shadow">
           <img
-            src={`http://localhost:5000${project.image}`}
+            src={`https://realtrustbackend.onrender.com/uploads/${project.image}`}
             alt={project.name}
             className="w-full h-48 object-cover"
           />
